@@ -1,0 +1,224 @@
+模糊查询修改记录:
+# 确认要修改的页面DPPL0001
+ 复制当前的id=query4DPPL0001的<select>...<select/>,粘贴为id=query4DPPL0001_FuzzyQuery的<select>...<select/>
+(注:这段代码较长复制时注意点。)
+ Ctrl+Shift+R查*query4DPPL0001找到ServiceDPPL0001.java文件，修改query4DPPL0001为query4DPPL0001_FuzzyQuery.
+#更新到的目录
+\\10.1.9.220\c$\tomcat\webapps\suneps\WEB-INF\classes\com\baosight\ieps
+
+
+<select id="query4DPPL0001"  parameterClass="hashmap" resultClass="Dppl01">
+		select rownum as "seq",xx.* from( SELECT
+				A.ID  as "id" ,		
+				PLAN_CODE  as "planCode" ,		
+				PLAN_KIND  as "planKind" ,		
+				STATUS  as "status" ,		
+				DATA_SOURCE  as "dataSource" ,		
+				TENANT_ID  as "tenantId" ,		
+				OU_ID  as "ouId" ,		
+				
+				MATERIAL_NO  as "materialNo" ,		
+				MATERIAL_NAME  as "materialName" ,		
+				SPECIFICATION  as "specification" ,		
+				MR_NO  as "mrNo" ,		
+				REQUEST_DELIVERY_DATE  as "requestDeliveryDate" ,		
+				REQUEST_AMOUNT  as "requestAmount" ,		
+				UNIT  as "unit" ,		
+				MATERIAL_CLASS_CODE  as "materialClassCode" ,		
+				MATERIAL_CLASS_ID  as "materialClassId" ,		
+				CHARACTER  as "character" ,		
+				DID  as "did" ,		
+				BASE_TAXED  as "baseTaxed" ,		
+				PACK_MANNER  as "packManner" ,		
+				DELIVERY_STATUS  as "deliveryStatus" ,		
+				OTHERS  as "others" ,		
+				MEMO  as "memo" ,		
+				CURRENCY  as "currency" ,		
+				BID_FLAG  as "bidFlag" ,		
+				DUMMY_LINE_ID  as "dummyLineId" ,		
+				SALE_PRICE  as "salePrice" ,		
+				PRODUCER  as "producer" ,		
+				BUY_PRICE  as "buyPrice" ,		
+				PURCHASE_MENU_ID  as "purchaseMenuId" ,		
+				WBS  as "wbs" ,		
+				DEVICE_ID  as "deviceId" ,		
+				TOTAL_WEIGHT  as "totalWeight" ,		
+				IS_PUBLIC_PUB  as "isPublicPub" ,		
+				PRE_PRICE  as "prePrice" ,		
+				PRE_CONFIRM_PRICE  as "preConfirmPrice" ,		
+				COMPANY_CODE  as "companyCode" ,		
+				COMPANY_NAME  as "companyName" ,		
+				MTL_LEVEL1  as "mtlLevel1" ,		
+				MTL_LEVEL1_NAME  as "mtlLevel1Name" ,		
+				MTL_LEVEL2  as "mtlLevel2" ,		
+				MTL_LEVEL2_NAME  as "mtlLevel2Name" ,		
+				MTL_LEVEL3  as "mtlLevel3" ,		
+				MTL_LEVEL3_NAME  as "mtlLevel3Name" ,		
+				MTL_HOST_NAME  as "mtlHostName" ,		
+				MTL_PARAM  as "mtlParam" ,		
+				COMPANY_CONTROL_PRICE  as "companyControlPrice" ,		
+				RECEIVE_DATE  as "receiveDate" ,		
+				MTL_STANDARD  as "mtlStandard" ,		
+				MTL_PRODUCT_AREA  as "mtlProductArea" ,		
+				EXECUTIVE_STANDARD  as "executiveStandard" ,		
+				PEROID  as "peroid" ,		
+				CUSTOMER_ID  as "customerId" ,		
+				CUSTOMER_NAME  as "customerName" ,		
+				REMARK  as "remark" ,		
+				MTL_RECEIVE_DATE  as "mtlReceiveDate" ,		
+				LAST_EXECUTE_PRICE  as "lastExecutePrice" ,		
+				THIS_TAX_PRICE  as "thisTaxPrice" ,		
+				DELIVERY_AREA  as "deliveryArea" ,		
+				DELIVERY_DATE  as "deliveryDate" ,		
+				TRANSPORTAT_WAY  as "transportatWay" ,		
+				INCREASEMENT_TAX  as "increasementTax" ,		
+				CREATE_USER  as "createUser" ,		
+				CREATE_DATE  as "createDate" ,		
+				UPDATE_USER  as "updateUser" ,		
+				UPDATE_DATE  as "updateDate" ,		
+				DELETE_USER  as "deleteUser" ,		
+				DELETE_DATE  as "deleteDate" ,		
+				RECORD_MEMO  as "recordMemo" ,		
+				FILED1  as "filed1" ,		
+				FILED2  as "filed2" ,		
+				FILED3  as "filed3" ,		
+				FILED4  as "filed4" ,		
+				FILED5  as "filed5" ,		
+				FILED6  as "filed6" ,		
+				FILED7  as "filed7" ,		
+				FILED8  as "filed8" ,		
+				FILED9  as "filed9" ,		
+				ILED10  as "iled10" ,		
+				FILED11  as "filed11" ,		
+				FILED12  as "filed12" ,		
+				REC_CREATOR_USERID  as "recCreatorUserid" ,		
+				REC_CREATOR_NAME  as "recCreatorName" ,		
+				REC_CREATE_TIME  as "recCreateTime" ,		
+				REC_UPDATOR_USERID  as "recUpdatorUserid" ,		
+				REC_UPDATOR_NAME  as "recUpdatorName" ,		
+				REC_UPDATOR_TIME  as "recUpdatorTime" ,		
+				REC_DELETOR_USERID  as "recDeletorUserid" ,		
+				REC_DELETOR_NAME  as "recDeletorName" ,		
+				REC_DELETOR_TIME  as "recDeletorTime" 		
+			FROM TDPPL01 A,PUDD_PURCHASE_MENU B
+	WHERE 1=1 AND B.USER_ID = #userId# AND 
+  (SUBSTR(A.MATERIAL_NO,0,2) = B.MENU_CODE OR SUBSTR(A.MATERIAL_NO,0,5) = B.MENU_CODE OR SUBSTR(A.MATERIAL_NO,0,8) = B.MENU_CODE)
+			<isNotEmpty prepend=" AND " property="id">A.ID =  #id#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="planCode">
+				PLAN_CODE =#planCode#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="planKind">PLAN_KIND =  #planKind#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="status">STATUS =  #status#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="dataSource">DATA_SOURCE =  #dataSource#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="tenantId">TENANT_ID =  #tenantId#</isNotEmpty>
+  			<isNotEmpty prepend=" AND " property="ouId">OU_ID =  #ouId#</isNotEmpty>
+  			<isNotEmpty prepend=" AND " property="seq">SEQ =  #seq#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="materialNo">MATERIAL_NO like  '%'|| #materialNo# || '%'</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="materialName">MATERIAL_NAME like '%'|| #materialName# || '%'</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="specification">SPECIFICATION =  #specification#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mrNo">MR_NO =  #mrNo#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="requestDeliveryDate">REQUEST_DELIVERY_DATE =  #requestDeliveryDate#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="requestAmount">REQUEST_AMOUNT =  #requestAmount#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="unit">UNIT =  #unit#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="materialClassCode">MATERIAL_CLASS_CODE =  #materialClassCode#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="materialClassId">MATERIAL_CLASS_ID =  #materialClassId#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="character">CHARACTER =  #character#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="did">DID =  #did#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="baseTaxed">BASE_TAXED =  #baseTaxed#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="packManner">PACK_MANNER =  #packManner#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="deliveryStatus">DELIVERY_STATUS =  #deliveryStatus#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="others">OTHERS =  #others#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="memo">MEMO =  #memo#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="currency">CURRENCY =  #currency#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="bidFlag">BID_FLAG =  #bidFlag#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="dummyLineId">DUMMY_LINE_ID =  #dummyLineId#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="salePrice">SALE_PRICE =  #salePrice#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="producer">PRODUCER =  #producer#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="buyPrice">BUY_PRICE =  #buyPrice#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="purchaseMenuId">PURCHASE_MENU_ID =  #purchaseMenuId#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="wbs">WBS =  #wbs#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="deviceId">DEVICE_ID =  #deviceId#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="totalWeight">TOTAL_WEIGHT =  #totalWeight#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="isPublicPub">IS_PUBLIC_PUB =  #isPublicPub#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="prePrice">PRE_PRICE =  #prePrice#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="preConfirmPrice">PRE_CONFIRM_PRICE =  #preConfirmPrice#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="companyCode">COMPANY_CODE =  #companyCode#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="companyName">COMPANY_NAME =  #companyName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlLevel1">MTL_LEVEL1 =  #mtlLevel1#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlLevel1Name">MTL_LEVEL1_NAME =  #mtlLevel1Name#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlLevel2">MTL_LEVEL2 =  #mtlLevel2#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlLevel2Name">MTL_LEVEL2_NAME =  #mtlLevel2Name#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlLevel3">MTL_LEVEL3 =  #mtlLevel3#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlLevel3Name">MTL_LEVEL3_NAME =  #mtlLevel3Name#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlHostName">MTL_HOST_NAME =  #mtlHostName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlParam">MTL_PARAM =  #mtlParam#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="companyControlPrice">COMPANY_CONTROL_PRICE =  #companyControlPrice#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlStandard">MTL_STANDARD =  #mtlStandard#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlProductArea">MTL_PRODUCT_AREA =  #mtlProductArea#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="executiveStandard">EXECUTIVE_STANDARD =  #executiveStandard#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="peroid">PEROID =  #peroid#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="customerId">CUSTOMER_ID =  #customerId#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="customerName">CUSTOMER_NAME =  #customerName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="remark">REMARK =  #remark#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mtlReceiveDate">MTL_RECEIVE_DATE =  #mtlReceiveDate#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="lastExecutePrice">LAST_EXECUTE_PRICE =  #lastExecutePrice#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="thisTaxPrice">THIS_TAX_PRICE =  #thisTaxPrice#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="deliveryArea">DELIVERY_AREA =  #deliveryArea#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="deliveryDate">DELIVERY_DATE =  #deliveryDate#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="transportatWay">TRANSPORTAT_WAY =  #transportatWay#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="increasementTax">INCREASEMENT_TAX =  #increasementTax#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="createUser">CREATE_USER =  #createUser#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="createDate">CREATE_DATE =  #createDate#</isNotEmpty>
+			
+			<isNotEmpty prepend=" AND " property="updateUser">UPDATE_USER =  #updateUser#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="updateDate">UPDATE_DATE =  #updateDate#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="deleteUser">DELETE_USER =  #deleteUser#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="deleteDate">DELETE_DATE =  #deleteDate#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recordMemo">RECORD_MEMO =  #recordMemo#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed1">FILED1 =  #filed1#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed2">FILED2 =  #filed2#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed3">FILED3 =  #filed3#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed4">FILED4 =  #filed4#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed5">FILED5 =  #filed5#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed6">FILED6 =  #filed6#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed7">FILED7 =  #filed7#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed8">FILED8 =  #filed8#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed9">FILED9 =  #filed9#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="iled10">ILED10 =  #iled10#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed11">FILED11 =  #filed11#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="filed12">FILED12 =  #filed12#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recCreatorUserid">REC_CREATOR_USERID =  #recCreatorUserid#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recCreatorName">REC_CREATOR_NAME =  #recCreatorName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recCreateTime">REC_CREATE_TIME =  #recCreateTime#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recUpdatorUserid">REC_UPDATOR_USERID =  #recUpdatorUserid#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recUpdatorName">REC_UPDATOR_NAME =  #recUpdatorName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recUpdatorTime">REC_UPDATOR_TIME =  #recUpdatorTime#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recDeletorUserid">REC_DELETOR_USERID =  #recDeletorUserid#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recDeletorName">REC_DELETOR_NAME =  #recDeletorName#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="recDeletorTime">REC_DELETOR_TIME =  #recDeletorTime#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="operatorId">OPERATOR_ID =  #operatorId#</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="planTimeStart">
+  		   	TO_date(A.REC_CREATE_TIME,'YYYY-MM-DD  HH24:mi:ss') &gt;=TO_date(#planTimeStart#||' 00:00:00','YYYY-MM-DD HH24:MI:SS')
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="planTimeEnd">
+   		   	TO_date(A.REC_CREATE_TIME,'YYYY-MM-DD  HH24:mi:ss') &lt;=TO_date(#planTimeEnd#||' 23:59:59','YYYY-MM-DD HH24:MI:SS')
+			</isNotEmpty>
+			<!--<isNotEmpty prepend=" AND " property="receiveDateStart">
+			  RECEIVE_DATE	 &gt;= #receiveDateStart#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="receiveDateEnd">
+			  RECEIVE_DATE   &lt;= #receiveDateEnd#
+			</isNotEmpty>
+			--><dynamic prepend="ORDER BY">
+		         <isNotEmpty property="orderBy">
+		    		  $orderBy$
+		   		 </isNotEmpty>
+		   		 <isEmpty property="orderBy">
+   		  			<isNotEmpty prepend=" " property="operatorId4Order">
+   		  				decode(OPERATOR_ID,#operatorId4Order#,1,2),
+   		  			</isNotEmpty>
+		    		A.ID asc
+				 </isEmpty>
+	  		</dynamic>
+	  		) xx
+	</select>

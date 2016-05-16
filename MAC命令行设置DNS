@@ -1,0 +1,11 @@
+networksetup -setdnsservers Ethernet 10.1.10.15
+
+参考:
+ 列出所有的网络连接方式
+networksetup -listallnetworkservices
+
+给指定的网络连接方式设定DNS服务器
+sudo networksetup-setdnsservers AirPort 192.168.10.200
+
+清空DNS缓存
+dscacheutil -flushcache

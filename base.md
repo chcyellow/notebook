@@ -1,5 +1,3 @@
-TextMate怎么使用git？
-command+y快捷键
 #第一次推送仓库
 #git init
 //初始化代码库。
@@ -47,10 +45,3 @@ OR
 可以通过如下命令进行代码合并
 git pull --rebase origin master
 此时再执行 git push -u origin master即可完成代码上传。
-
-#windows下git修改默认vim编辑器为gvim
-修改C:\RailsInstaller\Git\bin下vi或vim文件。
-#!/bin/sh
-
-#! exec /share/vim/vim74/vim "$@"
-exec C:/Program\ Files\ \(x86\)/Vim/vim74/gvim "$@"
