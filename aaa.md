@@ -1,5 +1,3 @@
-sgagag
-asdfsdf
 1)  Roses are red,
 2)  Mud is fun,
 3)  Violets are blue,
@@ -9,6 +7,7 @@ asdfsdf
 7)  And so are you.
 a) Roses are red,
 b) Violets are blue,
+text
 c) Intelligence is learned,
 d) Can you learn too?
 a) Roses are red,
