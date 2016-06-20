@@ -72,3 +72,5 @@ git format-patch -M master;
 git checkout master;
 git checkout -b patchbrh;
 git am 0001....path;
+
+#±Í«©π‹¿Ì
