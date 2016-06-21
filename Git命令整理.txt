@@ -14,7 +14,7 @@ git config -l【查看全局信息】
 git init【初始化】
 git status【查看本地库状态】
 git add .
-git commit -am "First Commit"
+git commit -am "First Commit"exi
 git log【查看日志】
 git log --pretty=oneline【一行查看日志】
 git reset --hard HEAD~1|^【HEAD指针指向前一个commit对象】
@@ -74,3 +74,19 @@ git checkout -b patchbrh;
 git am 0001....path;
 
 #标签管理
+git tag v1.0
+git tag
+git log --pretty=oneline --abbrev-commit
+git tag v1.2 git 27d0012
+git show v1.2
+git show 27d0012
+git tag -a v0.6 -m "test version" 37b4048
+	#gpg加密&解密
+	gpg --gen-key
+	gpg --gen-revoke EFB465C8生成撤销
+	gpg --list-keys
+	gpg --recipient EFB465C8--output demo.en.txt --encrypt demo.txt加密文件
+	gpg --output demo.de.txt --decrypt demo.en.txt解密文件
+git tag -u "chcyellow" -s v0.9 -m "gpgtag" 3e9dcc
+git tag -a -m "gpgtag" -s v0.9 -u chcyellow
+git tag -a v0.9 -m "test version" 37b4048 -s
