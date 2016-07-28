@@ -40,6 +40,7 @@ git reset --hard ORIG_HEAD【用来撤销已经commit 的merge】
 git push origin --delete brh【删除远程分支】
 git push origin :chc【上传一个空分支,从而删除远程分支】
 git branch -m brh chc【重命名本地分支】
+git branch --set-upstream debug origin/debug【本地分支与远程分支建立关联】
 
 #冲突解决
 git log --graph --pretty=oneline --abbrev-commit【采用绘图的方式显示记录】
